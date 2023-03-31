@@ -7,6 +7,7 @@ namespace CustomerListMVC.Controllers
     public class HomeController : Controller
     {
         #region
+        //All emails are fake
         public static List<CustomerModel> Customers = new List<CustomerModel>
         {
             new CustomerModel {LastName = "Plodder", FirstName = "Paul", Email = "PaulPlodder@student.swic.edu", State = "MO"},
@@ -75,6 +76,7 @@ namespace CustomerListMVC.Controllers
         public string? searchTerm;
         public IActionResult Index()
         {
+            //Make list available to view
             ViewBag.Customers = Customers;
             return View("CustomerList");
         }
@@ -87,6 +89,7 @@ namespace CustomerListMVC.Controllers
         [HttpPost]
         public IActionResult CustomerList()
         {
+            //Post method to filter data from user input
             string searchTerm = Request.Form["searchInput"];
             ViewBag.Customers = Customers;
             if (searchTerm != "")
