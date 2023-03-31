@@ -1,0 +1,46 @@
+﻿@model CustomerModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <style>
+        .center {
+            margin: 0 25%;
+        }
+    </style>
+    <meta name="viewport" content="width=device-width" />
+    <title>CustomerList</title>
+</head>
+<body class="center" style="background-color: grey">
+    <form asp-action="CustomerList" method="post" class="center">
+        <label >To see other states, enter a state abreviation:</label>
+        <input name="searchInput" type="text"/>
+        <button type="submit">Continue</button>
+    </form>
+    <br />
+    <table class="center" style="border-style: solid; background-color: lightgray">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>State</th>
+        </tr>
+        @foreach (var customer in ViewBag.Customers)
+        {
+            <tr>
+                <td>@customer.FirstName</td>
+                <td>@customer.LastName</td>
+                <td>@customer.Email</td>
+                <td>@customer.State</td>
+            </tr>
+        }
+    </table>
+    <footer class="center" style="text-align: center; color: rgba(0, 0, 0, 0.5);">
+        <p>All emails are fake</p>
+    </footer>
+</body>
+</html>
